@@ -1,0 +1,61 @@
+formatVersion: 1
+inputs:
+  tmcClusterName:
+    type: string
+    title: Cluster Name
+    description: Existing Tanzu Mission Control Cluster Name
+    default: test-01
+  tmcOrganziationId:
+    type: string
+    title: Organization ID
+    description: Dynamic Types TMC Organization ID
+    default: a06792a4-70b5-469b-9dfc-3a3fb49ec3ae
+  tmcProvisionerSshKey:
+    type: string
+    title: SSH Key
+    description: Name of the SSH key (AWS - us-east-1)
+    default: smcg-tmc-us-west-1
+  tmcNodePoolCount:
+    type: string
+    title: Number of Worker Nodes
+    description: Name of the SSH key (AWS - us-east-1)
+    default: '1'
+    enum:
+      - '1'
+      - '3'
+      - '5'
+resources:
+  TMCCluster:
+    type: Custom.TMCCluster
+    metadata:
+      layoutPosition:
+        - 0
+        - 0
+    properties:
+      tmcOrganizationId: '${input.tmcOrganziationId}'
+      tmcClusterName: '${input.tmcClusterName}'
+      tmcClusterGroupName: default
+      tmcClusterManagementCluster: aws-hosted
+      tmcClusterProvisioner: spc-46-aws
+      tmcProvisionerRegion: us-east-1
+      tmcProvisionerPodCIDR: 192.168.0.0/16
+      tmcProvisionerKubernetesVersion: 1.19.1-3-amazon2
+      tmcProvisionerServiceCIDR: 10.96.0.0/12
+      tmcProvisionerSshKey: '${input.tmcProvisionerSshKey}'
+      tmcControlPlaneAz1: us-east-1a
+      tmcControlPlaneInstanceType: m5.large
+      tmcNodePoolName: default-node-pool
+      tmcNodePoolAz: us-east-1a
+      tmcNodePoolInstance: m5.large
+      tmcNodePoolCount: '${input.tmcNodePoolCount}'
+      tmcProvisionerVPC: vpc-0aebc773082a7afc9
+      tmcProviderPublicSubnetAz1: subnet-0ce512b804f2e79ee
+      tmcProviderPrivateSubnetAz1: subnet-0e8ddb5720120be86
+      tmcProvisionerCredential: spc-46-aws
+      tmcControlPlaneHA: true
+      tmcControlPlaneAz2: us-east-1b
+      tmcControlPlaneAz3: us-east-1c
+      tmcProviderPublicSubnetAz3: subnet-06ecf64acf615ddfe
+      tmcProviderPublicSubnetAz2: subnet-079e6f00300c86bcd
+      tmcProviderPrivateSubnetAz2: subnet-01472264bc0033f04
+      tmcProviderPrivateSubnetAz3: subnet-0c644039ab4d5c236

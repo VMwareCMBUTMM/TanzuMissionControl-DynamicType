@@ -1,0 +1,22 @@
+formatVersion: 1
+inputs:
+  tmcClusterName:
+    type: string
+    title: Cluster Name
+    description: Existing Tanzu Mission Control Cluster Name
+    default: test-01
+  tmcOrganziationId:
+    type: string
+    title: Organization ID
+    description: Dynamic Types TMC Organization ID
+    default: eb2da1e8-f8af-4b30-8395-d2d110ebbeff
+resources:
+  TMCCluster:
+    type: Custom.TMCCluster
+    metadata:
+      layoutPosition:
+        - 0
+        - 0
+    properties:
+      tmcOrganizationId: '${input.tmcOrganziationId}'
+      tmcClusterName: '${input.tmcClusterName}'

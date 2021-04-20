@@ -1,0 +1,48 @@
+formatVersion: 1
+inputs:
+  tmcClusterName:
+    type: string
+    title: Cluster Name
+  tmcOrganziationId:
+    type: string
+    description: Dynamic Types TMC Organization ID
+    default: 0a5cea13-fadc-4bb2-acb3-4247f73bc743
+    title: Organization ID
+  tmcNodePoolCount:
+    type: string
+    enum:
+      - '1'
+      - '3'
+      - '5'
+    description: Name of the SSH key (AWS - us-east-1)
+    default: '1'
+    title: Number of Worker Nodes
+  tmcControlPlaneHA:
+    type: boolean
+    title: HA Control Plane
+    default: false
+resources:
+  TMCCluster:
+    type: Custom.TMCCluster
+    metadata:
+      layoutPosition:
+        - 0
+        - 0
+    properties:
+      tmcOrganizationId: '${input.tmcOrganziationId}'
+      tmcClusterName: '${input.tmcClusterName}'
+      tmcClusterProvisioner: tmc-clusters
+      tmcClusterGroupName: tmm-onprem
+      tmcProvisionerKubernetesVersion: v1.18.5+vmware.1-tkg.1.c40d30d
+      tmcProvisionerServiceCIDR: 10.96.0.0/16
+      tmcProvisionerPodCIDR: 172.20.0.0/16
+      tmcNodePoolInstance: best-effort-large
+      tmcNodePoolName: vsphere-node-pool-1
+      tmcNodePoolCount: '${input.tmcNodePoolCount}'
+      tmcClusterDescription: TMC Dev Cluster on vSphere
+      tmcNodePoolStorageClass: vsan-default-storage-policy
+      tmcControlPlaneStorageClass: vsan-default-storage-policy
+      tmcProvisionerDefaultStorageClass: vsan-default-storage-policy
+      tmcClusterManagementCluster: cmbu-tmm-vcf
+      tmcControlPlaneInstanceType: guaranteed-small
+      tmcControlPlaneHA: '${input.tmcControlPlaneHA}'

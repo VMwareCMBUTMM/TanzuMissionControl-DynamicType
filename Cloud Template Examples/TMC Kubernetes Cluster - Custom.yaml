@@ -1,0 +1,142 @@
+formatVersion: 1
+inputs:
+  tmcClusterName:
+    type: string
+    default: ''
+  tmcProvisionerVPCCIDR:
+    type: string
+    default: ''
+  tmcProvisionerVPC:
+    type: string
+    default: ''
+  tmcProvisionerSshKey:
+    type: string
+    default: ''
+  tmcProvisionerServiceCIDR:
+    type: string
+    default: 10.96.0.0/12
+  tmcProvisionerRegion:
+    type: string
+    default: ''
+  tmcProvisionerPodCIDR:
+    type: string
+    default: 192.168.0.0/16
+  tmcProvisionerKubernetesVersion:
+    type: string
+    default: ''
+  tmcProvisionerCredential:
+    type: string
+    default: ''
+  tmcProviderPublicSubnetAz3:
+    type: string
+    default: ''
+  tmcProviderPublicSubnetAz2:
+    type: string
+    default: ''
+  tmcProviderPublicSubnetAz1:
+    type: string
+    default: ''
+  tmcProviderPrivateSubnetAz3:
+    type: string
+    default: ''
+  tmcProviderPrivateSubnetAz2:
+    type: string
+    default: ''
+  tmcProviderPrivateSubnetAz1:
+    type: string
+    default: ''
+  tmcOrganizationId:
+    type: string
+    default: ''
+  tmcNodePoolName:
+    type: string
+    default: ''
+  tmcNodePoolInstance:
+    type: string
+    default: ''
+  tmcNodePoolCount:
+    type: string
+    default: ''
+  tmcNodePoolAz:
+    type: string
+    default: ''
+  tmcControlPlaneInstanceType:
+    type: string
+    default: ''
+  tmcControlPlaneHA:
+    type: boolean
+    default: false
+  tmcControlPlaneAz3:
+    type: string
+    default: ''
+  tmcControlPlaneAz2:
+    type: string
+    default: ''
+  tmcControlPlaneAz1:
+    type: string
+    default: ''
+  tmcClusterProvisioner:
+    type: string
+    default: ''
+  tmcClusterManagementCluster:
+    type: string
+    default: ''
+  tmcClusterGroupName:
+    type: string
+    default: ''
+  tmcClusterDescription:
+    type: string
+    default: ''
+  tmcProvisionerStorageClasses:
+    type: array
+    default: []
+  tmcProvisionerDefaultStorageClass:
+    type: string
+    default: ''
+  tmcNodePoolStorageClass:
+    type: string
+    default: ''
+  tmcControlPlaneStorageClass:
+    type: string
+    default: ''
+resources:
+  TMCCluster:
+    type: Custom.TMCCluster
+    metadata:
+      layoutPosition:
+        - 0
+        - 0
+    properties:
+      tmcProvisionerVPCCIDR: '${input.tmcProvisionerVPCCIDR}'
+      tmcProvisionerVPC: '${input.tmcProvisionerVPC}'
+      tmcProvisionerSshKey: '${input.tmcProvisionerSshKey}'
+      tmcProvisionerServiceCIDR: '${input.tmcProvisionerServiceCIDR}'
+      tmcProvisionerRegion: '${input.tmcProvisionerRegion}'
+      tmcProvisionerPodCIDR: '${input.tmcProvisionerPodCIDR}'
+      tmcProvisionerKubernetesVersion: '${input.tmcProvisionerKubernetesVersion}'
+      tmcProvisionerCredential: '${input.tmcProvisionerCredential}'
+      tmcProviderPublicSubnetAz3: '${input.tmcProviderPublicSubnetAz3}'
+      tmcProviderPublicSubnetAz2: '${input.tmcProviderPublicSubnetAz2}'
+      tmcProviderPublicSubnetAz1: '${input.tmcProviderPublicSubnetAz1}'
+      tmcProviderPrivateSubnetAz3: '${input.tmcProviderPrivateSubnetAz3}'
+      tmcProviderPrivateSubnetAz2: '${input.tmcProviderPrivateSubnetAz2}'
+      tmcProviderPrivateSubnetAz1: '${input.tmcProviderPrivateSubnetAz1}'
+      tmcOrganizationId: '${input.tmcOrganizationId}'
+      tmcNodePoolName: '${input.tmcNodePoolName}'
+      tmcNodePoolInstance: '${input.tmcNodePoolInstance}'
+      tmcNodePoolCount: '${input.tmcNodePoolCount}'
+      tmcNodePoolAz: '${input.tmcNodePoolAz}'
+      tmcControlPlaneInstanceType: '${input.tmcControlPlaneInstanceType}'
+      tmcControlPlaneHA: '${input.tmcControlPlaneHA}'
+      tmcControlPlaneAz3: '${input.tmcControlPlaneAz3}'
+      tmcControlPlaneAz2: '${input.tmcControlPlaneAz2}'
+      tmcControlPlaneAz1: '${input.tmcControlPlaneAz1}'
+      tmcClusterProvisioner: '${input.tmcClusterProvisioner}'
+      tmcClusterName: '${input.tmcClusterName}'
+      tmcClusterManagementCluster: '${input.tmcClusterManagementCluster}'
+      tmcClusterGroupName: '${input.tmcClusterGroupName}'
+      tmcClusterDescription: '${input.tmcClusterDescription}'
+      tmcProvisionerStorageClasses: '${input.tmcProvisionerStorageClasses}'
+      tmcProvisionerDefaultStorageClass: '${input.tmcProvisionerDefaultStorageClass}'
+      tmcNodePoolStorageClass: '${input.tmcNodePoolStorageClass}'
+      tmcControlPlaneStorageClass: '${input.tmcControlPlaneStorageClass}'
